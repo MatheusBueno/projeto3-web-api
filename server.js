@@ -1,7 +1,7 @@
 require("dotenv-safe").config();
 const express = require("express");
 const bodyParser = require("body-parser");
-const port = process.PORT || 3000;
+const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 const uri = process.env.MONGO_CONNECT;
 
