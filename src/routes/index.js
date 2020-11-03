@@ -18,7 +18,7 @@ routes.post("/upload", multer(multerConfig).single("file"), (req, res) => {
 
   res.json({
     message: "Upload realizado com sucesso",
-    filePath: `https://projeto-web-3.herokuapp.com/public/uploads/${filename}`,
+    filePath: `https://projeto-web-3.herokuapp.com/${filename}`,
   });
 });
 
