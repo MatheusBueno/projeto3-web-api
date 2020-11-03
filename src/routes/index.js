@@ -10,13 +10,13 @@ const CardController = require("../controllers/cardController");
 const authMiddleware = require("../middlewares/auth");
 const adminMiddleware = require("../middlewares/onlyAdmin");
 
-routes.get("/", authMiddleware, adminMiddleware, (req, res) =>
-  res.json({ message: "Ola mundo" })
-);
+routes.get("/", (req, res) => res.json({ message: "Ola mundo" }));
 routes.post("/users", UserController.store);
 routes.post("/login", SessionController.store);
 routes.post(
   "/upload",
+  authMiddleware,
+  adminMiddleware,
   multer(multerConfig).single("file"),
   UploadController.store
 );
