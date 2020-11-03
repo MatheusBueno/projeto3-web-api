@@ -14,6 +14,7 @@ routes.get("/", authMiddleware, adminMiddleware, (req, res) =>
 routes.post("/users", UserController.store);
 routes.post("/login", SessionController.store);
 routes.post("/upload", multer(multerConfig).single("file"), (req, res) => {
+  console.log('HERE');
   res.json({ message: "Upload realizado com sucesso", filePath: filename });
 });
 
