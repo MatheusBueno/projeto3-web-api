@@ -14,6 +14,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/", routes);
 
+app.use(express.static("public"));
+
 mongoose
   .connect(uri, {
     useNewUrlParser: true,

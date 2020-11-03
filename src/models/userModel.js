@@ -35,8 +35,8 @@ UserSchema.methods = {
 };
 
 UserSchema.statics = {
-  generateToken({ id }) {
-    return jwt.sign({ id }, process.env.SECRET, {
+  generateToken({ id, isAdmin }) {
+    return jwt.sign({ id, isAdmin }, process.env.SECRET, {
       expiresIn: 10000000,
     });
   },
