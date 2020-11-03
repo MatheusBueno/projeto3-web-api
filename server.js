@@ -1,8 +1,8 @@
 require("dotenv-safe").config();
 const express = require("express");
 const bodyParser = require("body-parser");
-const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
+const port = process.env.PORT || 3000;
 const uri = process.env.MONGO_CONNECT;
 
 const routes = require("./src/routes");
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/", routes);
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 
 mongoose
   .connect(uri, {
