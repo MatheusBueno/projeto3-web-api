@@ -7,13 +7,13 @@ const { Schema } = mongoose;
 const UserSchema = new Schema({
   email: {
     type: String,
-    required: true,
+    required: [true, 'email é obrigatório'],
     unique: true,
     lowercase: true,
   },
   password: {
     type: String,
-    required: true,
+    required: [true, 'Senha é obrigatório'],
   },
   isAdmin: {
     type: Boolean,

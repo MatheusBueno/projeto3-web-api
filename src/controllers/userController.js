@@ -16,6 +16,11 @@ class UserController {
       return res.json(user);
     } catch (error) {
       console.log(error);
+      if(error.errors && (error.errors.email || error.errors.password)){
+        res.status(500).json({ message: ` ${error.errors.password && error.errors.password.message || ''}${error.errors.password && '; ' || ''}${error.errors.email && error.errors.email.message || ''}` });
+      }else{
+        res.status(500).json({ message: "Não foi possível criar o usuário" });
+      }
     }
   }
 }
