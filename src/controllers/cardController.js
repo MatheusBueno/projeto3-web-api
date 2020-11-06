@@ -33,8 +33,11 @@ class CardController {
       res.status(200).json(card);
     } catch (error) {
       console.log(error);
-
-      res.status(500).json({ message: "Não foi possível criar o card" });
+      if(error.errors && (error.errors.description || error.errors.title)){
+        res.status(500).json({ message: ` ${error.errors.title && error.errors.title.message || ''}${error.errors.title && '; ' || ''}${error.errors.description && error.errors.description.message || ''}` });
+      }else{
+        res.status(500).json({ message: "Não foi possível criar o card" });
+      }
     }
   }
 }

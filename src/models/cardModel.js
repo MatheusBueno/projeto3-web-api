@@ -5,7 +5,7 @@ const CardSchema = new Schema({
   title: {
     type: String,
     trim: true,
-    required: true,
+    required: [true, 'Título é obrigatório'],
     validate: {
       validator: function (val) {
         return val.length >= 3
@@ -16,7 +16,7 @@ const CardSchema = new Schema({
   description: {
     type: String,
     trim: true,
-    required: true,
+    required: [true, 'Descrição é obrigatório'],
     validate: {
       validator: function (val) {
         return val.length >= 3
